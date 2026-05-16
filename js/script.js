@@ -28,8 +28,6 @@ function ajustaTamanhoPalcoJogo(){
     console.log(largura, altura)
 }
 
-ajustaTamanhoPalcoJogo()
-
 let cronometro = setInterval(function(){
     
 
@@ -47,7 +45,7 @@ let cronometro = setInterval(function(){
 
 //Criando posições aleatórias
 function posicaoRandomica() {
-
+     ajustaTamanhoPalcoJogo()
     //Verificar se já tem um elemento img com id mosca // Remover mosca anterior
     let elemento = document.getElementById('mosca')
     
@@ -62,12 +60,13 @@ function posicaoRandomica() {
         }
     }
 
-    let posicaoX = Math.floor(Math.random() * largura) - 130
-    let posicaoY = Math.floor(Math.random() * altura) - 130
+    let tamanhoMosca = largura < 768 ? 100 : 200
+
+    let posicaoX = Math.floor(Math.random() * (largura - tamanhoMosca))
+    let posicaoY = Math.floor(Math.random() * (altura - tamanhoMosca))
 
     posicaoX = posicaoX < 0 ? 0 : posicaoX
     posicaoY = posicaoY < 0 ? 0 : posicaoY
-
     //Criando o elemento HTML
     let mosca = document.createElement('img')
     mosca.src = 'imagens/mosca.png'
@@ -110,3 +109,12 @@ function ladoAleatorio() {
 let criaMosca = setInterval(function(){
     posicaoRandomica()
 }, criaMoscaTempo)
+
+window.onload = function(){
+    ajustaTamanhoPalcoJogo()
+}
+
+window.addEventListener('resize', function(){
+        ajustaTamanhoPalcoJogo()
+    })
+
