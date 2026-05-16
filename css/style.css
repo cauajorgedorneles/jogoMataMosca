@@ -5,7 +5,10 @@ html {
 body {
     background-image: url(../imagens/bg.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    background-position: top center;
+    margin: 0;
+    min-height: 100vh;
 }
 
 .mosca1 {
@@ -50,4 +53,28 @@ body {
     float: left;
     font-size: 20px;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .mosca1 {
+        width: 35px;
+        height: 35px;
+    }
+
+    .mosca2 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .mosca3 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .painel {
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+    }
 }
